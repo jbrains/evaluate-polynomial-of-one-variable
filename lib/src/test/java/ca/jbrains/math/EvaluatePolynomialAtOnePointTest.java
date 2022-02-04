@@ -16,6 +16,11 @@ public class EvaluatePolynomialAtOnePointTest {
         Assertions.assertEquals(10, Polynomial.of(0, 5).at(2));
     }
 
+    @Test
+    void linearWithNonZeroIntercept() {
+        Assertions.assertEquals(31, Polynomial.of(3, 4).at(7));
+    }
+
     @Property
     void constantIsConstant(@ForAll int zerothPowerCoefficient, @ForAll int atPoint) {
         Assertions.assertEquals(zerothPowerCoefficient, Polynomial.of(zerothPowerCoefficient).at(atPoint));
