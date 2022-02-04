@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 
 public class EvaluatePolynomialAtOnePointTest {
     @Test
+    void empty() {
+        Assertions.assertEquals(0, Polynomial.of().at(12321));
+    }
+
+    @Test
     void constant() {
         Assertions.assertEquals(5, Polynomial.of(5).at(2));
     }
@@ -38,7 +43,8 @@ public class EvaluatePolynomialAtOnePointTest {
         }
 
         public int at(int point) {
-            return coefficients.length == 2 ? coefficients[1] * point + coefficients[0] : coefficients[0];
+            return coefficients.length == 0 ? 0
+                    : coefficients.length == 2 ? coefficients[1] * point + coefficients[0] : coefficients[0];
         }
     }
 }
