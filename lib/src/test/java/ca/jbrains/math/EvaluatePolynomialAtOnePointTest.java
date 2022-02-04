@@ -8,20 +8,27 @@ import org.junit.jupiter.api.Test;
 public class EvaluatePolynomialAtOnePointTest {
     @Test
     void constant() {
-        Assertions.assertEquals(5, polynomialOfAt(5, 2));
-    }
-
-    @Test
-    void linearWithZeroIntercept() {
-        Assertions.assertEquals(5, polynomialOfAt(0, 5, 2));
+        Assertions.assertEquals(5, Polynomial.of(5).at(2));
     }
 
     @Property
     void constantIsConstant(@ForAll int zerothPowerCoefficient, @ForAll int atPoint) {
-        Assertions.assertEquals(zerothPowerCoefficient, polynomialOfAt(zerothPowerCoefficient, atPoint));
+        Assertions.assertEquals(zerothPowerCoefficient, Polynomial.of(zerothPowerCoefficient).at(atPoint));
     }
 
-    private int polynomialOfAt(int zerothPowerCoefficient, int point) {
-        return zerothPowerCoefficient;
+    private static class Polynomial {
+        private int zerothPowerCoefficient;
+
+        public Polynomial(int zerothPowerCoefficient) {
+            this.zerothPowerCoefficient = zerothPowerCoefficient;
+        }
+
+        public static Polynomial of(int zerothPowerCoefficient) {
+            return new Polynomial(zerothPowerCoefficient);
+        }
+
+        public int at(int point) {
+            return zerothPowerCoefficient;
+        }
     }
 }
