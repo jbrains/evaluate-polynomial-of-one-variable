@@ -34,10 +34,8 @@ public class EvaluatePolynomialAtOnePointTest {
 
     private static class Polynomial {
         private final List<Integer> coefficients;
-        private int[] legacyCoefficients;
 
         public Polynomial(int[] legacyCoefficients) {
-            this.legacyCoefficients = legacyCoefficients;
             this.coefficients = List.ofAll(legacyCoefficients);
         }
 
