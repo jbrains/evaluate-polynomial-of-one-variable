@@ -11,24 +11,29 @@ public class EvaluatePolynomialAtOnePointTest {
         Assertions.assertEquals(5, Polynomial.of(5).at(2));
     }
 
+    @Test
+    void linearWithZeroIntercept() {
+        Assertions.assertEquals(10, Polynomial.of(0, 5).at(2));
+    }
+
     @Property
     void constantIsConstant(@ForAll int zerothPowerCoefficient, @ForAll int atPoint) {
         Assertions.assertEquals(zerothPowerCoefficient, Polynomial.of(zerothPowerCoefficient).at(atPoint));
     }
 
     private static class Polynomial {
-        private int zerothPowerCoefficient;
+        private int[] coefficients;
 
-        public Polynomial(int zerothPowerCoefficient) {
-            this.zerothPowerCoefficient = zerothPowerCoefficient;
+        public Polynomial(int[] coefficients) {
+            this.coefficients = coefficients;
         }
 
-        public static Polynomial of(int zerothPowerCoefficient) {
-            return new Polynomial(zerothPowerCoefficient);
+        public static Polynomial of(int... coefficients) {
+            return new Polynomial(coefficients);
         }
 
         public int at(int point) {
-            return zerothPowerCoefficient;
+            return coefficients.length == 1 ? coefficients[0] : 10;
         }
     }
 }
