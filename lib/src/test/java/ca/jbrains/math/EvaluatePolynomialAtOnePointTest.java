@@ -59,6 +59,7 @@ public class EvaluatePolynomialAtOnePointTest {
         }
 
         public int at(int point) {
+            if (coefficients.length() == 0) return 0;
             return coefficients.length() == 0 ? 0
                     : coefficients.length() == 1 ? coefficients.last() * foo(point, 0) + Polynomial.of(coefficients.init()).at(point)
                     : coefficients.length() == 2 ? coefficients.last() * foo(point, 1) + Polynomial.of(coefficients.init()).at(point)
