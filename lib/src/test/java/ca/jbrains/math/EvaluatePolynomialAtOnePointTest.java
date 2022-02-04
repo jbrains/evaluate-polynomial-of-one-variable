@@ -66,8 +66,10 @@ public class EvaluatePolynomialAtOnePointTest {
                     : -223816;
         }
 
+        // CONTRACT power >= 0
         private int foo(int point, int power) {
-            return power == 2 ? point * point : power == 1 ? point : power == 0 ? 1 : -234837;
+            if (power == 0) return 1;
+            return point * foo(point, power - 1);
         }
 
         private static Polynomial of(List<Integer> coefficients) {
