@@ -35,12 +35,12 @@ public class EvaluatePolynomialAtOnePointTest {
     private static class Polynomial {
         private final List<Integer> coefficients;
 
-        public Polynomial(int[] legacyCoefficients) {
-            this.coefficients = List.ofAll(legacyCoefficients);
+        public Polynomial(List<Integer> coefficients) {
+            this.coefficients = coefficients;
         }
 
         public static Polynomial of(int... coefficients) {
-            return new Polynomial(coefficients);
+            return new Polynomial(List.ofAll(coefficients));
         }
 
         public int at(int point) {
