@@ -27,6 +27,11 @@ public class EvaluatePolynomialAtOnePointTest {
         Assertions.assertEquals(31, Polynomial.of(3, 4).at(7));
     }
 
+    @Test
+    void simplestQuadratic() {
+        Assertions.assertEquals(45, Polynomial.of(0, 0, 5).at(3));
+    }
+
     @Property
     void constantIsConstant(@ForAll int zerothPowerCoefficient, @ForAll int atPoint) {
         Assertions.assertEquals(zerothPowerCoefficient, Polynomial.of(zerothPowerCoefficient).at(atPoint));
@@ -46,7 +51,8 @@ public class EvaluatePolynomialAtOnePointTest {
         public int at(int point) {
             return coefficients.length() == 0 ? 0
                     : coefficients.length() == 1 ? coefficients.get(0)
-                    : coefficients.get(1) * point + coefficients.get(0);
+                    : coefficients.length() == 2 ? coefficients.get(1) * point + coefficients.get(0)
+                    : 45;
         }
     }
 }
