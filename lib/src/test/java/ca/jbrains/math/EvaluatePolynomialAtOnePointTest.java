@@ -60,7 +60,7 @@ public class EvaluatePolynomialAtOnePointTest {
 
         public int at(int point) {
             if (coefficients.length() == 0) return 0;
-            if (coefficients.length() == 1 || coefficients.length() == 2 || coefficients.length() == 3)
+            if (coefficients.length() > 0)
                 return coefficients.last() * foo(point, coefficients.length() - 1) + Polynomial.of(coefficients.init()).at(point);
             return -223816;
         }
