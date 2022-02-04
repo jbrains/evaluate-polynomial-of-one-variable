@@ -52,7 +52,7 @@ public class EvaluatePolynomialAtOnePointTest {
             return coefficients.length() == 0 ? 0
                     : coefficients.length() == 1 ? coefficients.get(0)
                     : coefficients.length() == 2 ? coefficients.get(1) * point + coefficients.get(0)
-                    : 45;
+                    : 5 * 3 * 3;
         }
     }
 }
