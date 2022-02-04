@@ -32,10 +32,10 @@ public class EvaluatePolynomialAtOnePointTest {
     }
 
     private static class Polynomial {
-        private int[] coefficients;
+        private int[] legacyCoefficients;
 
-        public Polynomial(int[] coefficients) {
-            this.coefficients = coefficients;
+        public Polynomial(int[] legacyCoefficients) {
+            this.legacyCoefficients = legacyCoefficients;
         }
 
         public static Polynomial of(int... coefficients) {
@@ -43,9 +43,9 @@ public class EvaluatePolynomialAtOnePointTest {
         }
 
         public int at(int point) {
-            return coefficients.length == 0 ? 0
-                    : coefficients.length == 1 ? coefficients[0]
-                    : coefficients[1] * point + coefficients[0];
+            return legacyCoefficients.length == 0 ? 0
+                    : legacyCoefficients.length == 1 ? legacyCoefficients[0]
+                    : legacyCoefficients[1] * point + legacyCoefficients[0];
         }
     }
 }
