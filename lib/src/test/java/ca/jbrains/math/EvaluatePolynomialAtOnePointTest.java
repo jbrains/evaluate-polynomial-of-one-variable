@@ -1,5 +1,6 @@
 package ca.jbrains.math;
 
+import io.vavr.collection.List;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import org.junit.jupiter.api.Assertions;
@@ -32,10 +33,12 @@ public class EvaluatePolynomialAtOnePointTest {
     }
 
     private static class Polynomial {
+        private final List<Integer> coefficients;
         private int[] legacyCoefficients;
 
         public Polynomial(int[] legacyCoefficients) {
             this.legacyCoefficients = legacyCoefficients;
+            this.coefficients = List.ofAll(legacyCoefficients);
         }
 
         public static Polynomial of(int... coefficients) {
@@ -43,9 +46,9 @@ public class EvaluatePolynomialAtOnePointTest {
         }
 
         public int at(int point) {
-            return legacyCoefficients.length == 0 ? 0
-                    : legacyCoefficients.length == 1 ? legacyCoefficients[0]
-                    : legacyCoefficients[1] * point + legacyCoefficients[0];
+            return coefficients.length() == 0 ? 0
+                    : coefficients.length() == 1 ? coefficients.get(0)
+                    : coefficients.get(1) * point + coefficients.get(0);
         }
     }
 }
