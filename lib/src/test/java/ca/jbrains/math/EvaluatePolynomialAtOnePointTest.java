@@ -60,9 +60,7 @@ public class EvaluatePolynomialAtOnePointTest {
 
         public int at(int point) {
             if (coefficients.length() == 0) return 0;
-            if (coefficients.length() > 0)
-                return coefficients.last() * foo(point, coefficients.length() - 1) + Polynomial.of(coefficients.init()).at(point);
-            return -223816;
+            return coefficients.last() * foo(point, coefficients.length() - 1) + Polynomial.of(coefficients.init()).at(point);
         }
 
         // CONTRACT power >= 0
