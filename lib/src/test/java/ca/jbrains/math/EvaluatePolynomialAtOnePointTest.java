@@ -62,7 +62,11 @@ public class EvaluatePolynomialAtOnePointTest {
             return coefficients.length() == 0 ? 0
                     : coefficients.length() == 1 ? coefficients.get(0)
                     : coefficients.length() == 2 ? coefficients.get(1) * point + coefficients.get(0)
-                    : coefficients.get(2) * point * point + coefficients.get(1) * point + coefficients.get(0);
+                    : coefficients.get(2) * point * point + Polynomial.of(coefficients.init()).at(point);
+        }
+
+        private static Polynomial of(List<Integer> coefficients) {
+            return new Polynomial(coefficients);
         }
     }
 }
