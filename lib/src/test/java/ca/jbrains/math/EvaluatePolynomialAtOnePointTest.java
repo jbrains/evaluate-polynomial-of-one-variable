@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class EvaluatePolynomialAtOnePointTest {
-    @Test
-    void empty() {
-        Assertions.assertEquals(0, Polynomial.of().at(12321));
+    @Property
+    void empty(@ForAll int point) {
+        Assertions.assertEquals(0, Polynomial.of().at(point));
     }
 
     @Test
