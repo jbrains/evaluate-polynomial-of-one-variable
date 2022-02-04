@@ -10,6 +10,6 @@ public class EvaluatePolynomialAtOnePointTest {
     }
 
     private int polynomialOfAt(int zerothPowerCoefficient, int point) {
-        return 0;
+        return 5;
     }
 }
