@@ -37,6 +37,11 @@ public class EvaluatePolynomialAtOnePointTest {
         Assertions.assertEquals(7 * 4 * 4 + 3 * 4, Polynomial.of(0, 3, 7).at(4));
     }
 
+    @Test
+    void quadraticWithNonZeroLinearCoefficientAndNonZeroConstant() {
+        Assertions.assertEquals(7 * 4 * 4 + 3 * 4 + 9, Polynomial.of(9, 3, 7).at(4));
+    }
+
     @Property
     void constantIsConstant(@ForAll int zerothPowerCoefficient, @ForAll int atPoint) {
         Assertions.assertEquals(zerothPowerCoefficient, Polynomial.of(zerothPowerCoefficient).at(atPoint));
@@ -57,7 +62,7 @@ public class EvaluatePolynomialAtOnePointTest {
             return coefficients.length() == 0 ? 0
                     : coefficients.length() == 1 ? coefficients.get(0)
                     : coefficients.length() == 2 ? coefficients.get(1) * point + coefficients.get(0)
-                    : coefficients.get(2) * point * point + coefficients.get(1) * point;
+                    : coefficients.get(2) * point * point + coefficients.get(1) * point + coefficients.get(0);
         }
     }
 }
