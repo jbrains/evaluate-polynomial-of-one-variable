@@ -33,7 +33,7 @@ public class EvaluatePolynomialAtOnePointTest {
         }
 
         public int at(int point) {
-            return coefficients.length == 2 ? 10 : coefficients[0];
+            return coefficients.length == 2 ? 5 * 2 + 0 : coefficients[0];
         }
     }
 }
