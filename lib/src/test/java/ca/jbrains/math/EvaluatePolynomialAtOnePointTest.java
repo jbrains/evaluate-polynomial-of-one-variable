@@ -61,13 +61,13 @@ public class EvaluatePolynomialAtOnePointTest {
         public int at(int point) {
             return coefficients.length() == 0 ? 0
                     : coefficients.length() == 1 ? coefficients.last() * 1 + Polynomial.of(coefficients.init()).at(point)
-                    : coefficients.length() == 2 ? coefficients.last() * point + Polynomial.of(coefficients.init()).at(point)
+                    : coefficients.length() == 2 ? coefficients.last() * foo(point, 1) + Polynomial.of(coefficients.init()).at(point)
                     : coefficients.length() == 3 ? coefficients.last() * foo(point, 2) + Polynomial.of(coefficients.init()).at(point)
                     : -223816;
         }
 
         private int foo(int point, int power) {
-            return power == 2 ? point * point : -234723;
+            return power == 2 ? point * point : power == 1 ? point : -234723;
         }
 
         private static Polynomial of(List<Integer> coefficients) {
