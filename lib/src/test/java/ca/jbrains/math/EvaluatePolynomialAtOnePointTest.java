@@ -44,7 +44,8 @@ public class EvaluatePolynomialAtOnePointTest {
 
         public int at(int point) {
             return coefficients.length == 0 ? 0
-                    : coefficients.length == 2 ? coefficients[1] * point + coefficients[0] : coefficients[0];
+                    : coefficients.length == 1 ? coefficients[0]
+                    : coefficients[1] * point + coefficients[0];
         }
     }
 }
